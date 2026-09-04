@@ -6,7 +6,9 @@ from models import db, Task
 FRONTEND_DIR = os.path.join(os.path.dirname(__file__), "..", "frontend")
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tasks.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get(
+    "DATABASE_URL", "sqlite:///tasks.db"
+)
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 CORS(app)
