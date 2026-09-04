@@ -1,3 +1,4 @@
+---
 name: CI
 
 on:
@@ -25,16 +26,43 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install tools
+      - name: Install CI tools
         run: |
           python -m pip install --upgrade pip
           pip install black yamllint bandit
 
-      - name: Check Python formatting
-        run: black --check app/
+      - name: Black
+        shell: bash
+        run: |
+          mapfile -t files < <(git ls-files '*.py')
 
-      - name: Check YAML
-        run: yamllint .
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No Python files found — skipping Black"
+            exit 0
+          fi
 
-      - name: Run Python SAST
-        run: bandit -r app/ -ll
+          black --check "${files[@]}"
+
+      - name: YAML lint
+        shell: bash
+        run: |
+          mapfile -t files < <(git ls-files '*.yml' '*.yaml')
+
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No YAML files found — skipping yamllint"
+            exit 0
+          fi
+
+          yamllint "${files[@]}"
+
+      - name: Bandit SAST
+        shell: bash
+        run: |
+          mapfile -t files < <(git ls-files '*.py')
+
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No Python files found — skipping Bandit"
+            exit 0
+          fi
+
+          bandit -ll "${files[@]}"
