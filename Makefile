@@ -24,7 +24,7 @@ $(VENV)/bin/activate: $(BACKEND_DIR)/requirements.txt
 install: $(VENV)/bin/activate ## Create venv and install dependencies
 
 run: install ## Start the Flask backend (http://localhost:5000)
-	$(PYTHON) $(BACKEND_DIR)/app.py
+	FLASK_DEBUG=1 $(PYTHON) $(BACKEND_DIR)/app.py
 
 frontend: ## Serve the frontend (http://localhost:$(FRONTEND_PORT))
 	python3 -m http.server $(FRONTEND_PORT) --directory $(FRONTEND_DIR)
