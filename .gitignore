@@ -1,0 +1,196 @@
+# ============================================================
+# OS / Editor files
+# ============================================================
+
+.DS_Store
+Thumbs.db
+
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ============================================================
+# Environment variables / secrets
+# ============================================================
+
+.env
+.env.*
+!.env.example
+
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local secret files
+secrets/
+credentials/
+*.secret
+*.secrets
+
+# ============================================================
+# Python
+# ============================================================
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python tooling/cache
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Packaging/build output
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ============================================================
+# Terraform
+# ============================================================
+
+# Terraform working directory
+**/.terraform/*
+
+# Terraform state
+*.tfstate
+*.tfstate.*
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Terraform variable files commonly containing secrets
+*.tfvars
+*.tfvars.json
+
+# Allow example variable files
+!*.tfvars.example
+!*.tfvars.json.example
+
+# Local override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform CLI configuration
+.terraformrc
+terraform.rc
+
+# Terraform plan output
+*.tfplan
+tfplan
+
+# IMPORTANT:
+# Do NOT ignore .terraform.lock.hcl
+# It should normally be committed.
+
+# ============================================================
+# Ansible
+# ============================================================
+
+# Retry files
+*.retry
+
+# Ansible cache / temporary files
+.ansible/
+ansible.log
+
+# Local inventory files if they contain environment-specific
+# hosts, credentials, IP addresses, etc.
+inventory/local
+inventory/local.yml
+inventory/local.yaml
+inventory/local.ini
+
+# Unencrypted vault password files
+.vault_pass
+.vault-password
+vault-password*
+vault_pass*
+
+# ============================================================
+# Grafana
+# ============================================================
+
+# Local Grafana runtime/data
+grafana/data/
+grafana/log/
+grafana/logs/
+grafana/plugins/
+
+# SQLite database created by local Grafana
+grafana.db
+
+# Keep Grafana provisioning/configuration in Git:
+# grafana/provisioning/
+# grafana/dashboards/
+# grafana/*.ini
+# should normally NOT be ignored.
+
+# ============================================================
+# Prometheus
+# ============================================================
+
+# Prometheus runtime database / TSDB
+prometheus/data/
+prometheus/storage/
+
+# Local runtime files
+prometheus/*.log
+
+# Keep Prometheus configuration in Git:
+# prometheus/prometheus.yml
+# prometheus/rules/
+# prometheus/alerts/
+# should normally NOT be ignored.
+
+# ============================================================
+# Logs
+# ============================================================
+
+*.log
+logs/
+
+# ============================================================
+# Temporary files
+# ============================================================
+
+tmp/
+temp/
+.cache/
+
+# ============================================================
+# Docker / local development overrides
+# ============================================================
+
+docker-compose.override.yml
+compose.override.yml
+
+# ============================================================
+# Local certificates / generated credentials
+# ============================================================
+
+certs/private/
+*.csr
+
+# ============================================================
+# Misc generated files
+# ============================================================
+
+*.bak
+*.tmp
