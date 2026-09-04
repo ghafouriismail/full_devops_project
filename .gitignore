@@ -194,3 +194,5 @@ certs/private/
 
 *.bak
 *.tmp
+
+CLAUDE.md
